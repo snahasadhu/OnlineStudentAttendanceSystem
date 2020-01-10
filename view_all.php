@@ -12,6 +12,11 @@ include("header.php");
 				<input type="submit" value="Back" class="btn btn-info pull-right">
 			</form>
 
+			<form action="view_report.php" method="POST">
+				<input type="hidden" value="<?php echo $_POST['intake'] ?>" name="intake"> 
+				<input type="submit" value="View Report" class="btn btn-info pull-right">
+			</form>
+
             <br/>	
 	   </h2>
 		
