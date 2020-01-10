@@ -68,13 +68,14 @@ include("header.php");
 					$res=mysqli_query($con,"select * from attendance_records  where roll_number='$roll'");
 					$match=0;
 					while($row=mysqli_fetch_array($res))
-					{ 
-						if ($row['date'] == $match)
-							$a=0;
-						else
-							$a=1?>
-					 <th> <?php  if($a) echo $row['attendance_status'];
-					 $match=$row['date'];} ?> </th>
+					{ 						
+					 ?>
+					 <th>
+						<?php  					 
+							echo $row['attendance_status'];					 
+						}
+						?> 
+					 </th>
 					</td>
 				</tr>
 
