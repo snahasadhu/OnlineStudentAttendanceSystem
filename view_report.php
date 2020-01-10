@@ -7,9 +7,11 @@ include("header.php");
 
 <div class="panel panel-default">
 	<div class="panel panel-heading">
-		<h2>
-			<a class="btn btn-success" href="add.php">Add Student </a>
-			<a class="btn btn-info pull-right" href="index.php"> Back </a>
+		<h2>			
+			<form action="view_all.php" method="POST">
+				<input type="hidden" value="<?php echo $_POST['intake'] ?>" name="intake"> 
+				<input type="submit" value="Back" class="btn btn-info pull-right">
+			</form>
 		</h2>
 		
 
@@ -43,7 +45,7 @@ include("header.php");
 				</tr>
 
 					<?php 
-					$result=mysqli_query($con,"select * from attendance_records where intake='$intake'");
+					$result=mysqli_query($con,"select * from attendance_records where intake='$intake' group by roll_number");
 					$serialnumber=0;
 					$counter=0;
 					while($row=mysqli_fetch_array($result))
@@ -60,9 +62,10 @@ include("header.php");
 
 					 
 					<td> <?php echo $row['roll_number']; ?>
-					 </td>
-					
-					<?php $res=mysqli_query($con,"select * from attendance_records  where intake='$intake'");
+					 </td>					
+					<?php 
+					$roll=$row['roll_number']; 
+					$res=mysqli_query($con,"select * from attendance_records  where roll_number='$roll'");
 					$match=0;
 					while($row=mysqli_fetch_array($res))
 					{ 
