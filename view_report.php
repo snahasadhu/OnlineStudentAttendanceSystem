@@ -13,9 +13,11 @@
 function ShowDiv() {
     document.getElementById("back").style.display = "none";
     document.getElementById("print").style.display = "none";
+	document.getElementById("signature").style.visibility="visible";
 	window.print();
 	document.getElementById("back").style.display = "block";
     document.getElementById("print").style.display = "block";
+	document.getElementById("signature").style.visibility="hidden";
 }
 </script>
 
@@ -136,7 +138,7 @@ include("header.php");
 				</br>                         
 				</br>
 
-				<table>
+				<table id="signature" style="visibility:hidden;">
 					<tr> 
 							<td>
 							Course Teacher: <?php echo $_SESSION['user'] ?> 							
