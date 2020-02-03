@@ -21,8 +21,7 @@ $con=mysqli_connect("localhost","root","","attendance_system");
   </div>
     <div class="checkbox">
     <!-- <label class="pull-right"><input type="checkbox"> Remember me</label>	-->
-	
-	<label><input type="checkbox" name="teacher" id="teacher"> Login as Teacher</label>	
+		
 	<br/>
 	<label><input type="checkbox" name="admin" id="admin"> Login as Admin  </label>	
   </div>  
@@ -48,12 +47,8 @@ $con=mysqli_connect("localhost","root","","attendance_system");
     $User_name = $_SESSION['name'] = $_POST['name'];
     $User_Password = $_POST['password'];	
     
-    $User = 'none';
-
-    if(isset($_POST['teacher']))	{
-      $User = 'teacher';
-    }
-
+    $User = 'teacher';
+    
     if(isset($_POST['admin']))	{
       $User = 'admin';
     }
@@ -63,8 +58,6 @@ $con=mysqli_connect("localhost","root","","attendance_system");
       $que = "select * from teacher where username = '$User_name' AND password = '$User_Password'";		
     }else if($User == 'admin'){
       $que = "select * from admin where username = '$User_name' AND password = '$User_Password'";		
-    }else{
-      echo 'You must select either teacher or admin.'; 
     }
 
     $run = mysqli_query($conn, $que);
@@ -81,11 +74,7 @@ $con=mysqli_connect("localhost","root","","attendance_system");
         header("location: admin.php");
       }
 
-      }
-      else
-      {
-        header("location: login.php");
-      }
+      }      
 
     
   }
