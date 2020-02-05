@@ -9,17 +9,7 @@
 	padding: 0px;
 }
 </style>
-<script>
-function ShowDiv() {
-    document.getElementById("back").style.display = "none";
-    document.getElementById("print").style.display = "none";
-	document.getElementById("signature").style.visibility="visible";
-	window.print();
-	document.getElementById("back").style.display = "block";
-    document.getElementById("print").style.display = "block";
-	document.getElementById("signature").style.visibility="hidden";
-}
-</script>
+
 
 <?php
 include("db.php");
@@ -31,11 +21,10 @@ include("header.php");
 <div class="panel panel-default">
 	<div class="panel panel-heading">
 		<h2>			
-			<form action="view_all.php" method="POST">
+			<form action="admin_report_page.php" method="POST">
 				<input type="hidden" value="<?php echo $_POST['intake'] ?>" name="intake"> 
-				<input type="submit" value="Back" class="btn btn-info pull-right" id="back">
-				<input onclick="ShowDiv()" value="Print  Report" class="btn btn-info pull-left" id="print">
-				<a class="btn btn-info pull-right" href="logout.php"> Logout </a>
+				<input type="submit" value="Back" class="btn btn-info pull-right" id="back">	
+                <a class="btn btn-info pull-right" href="logout.php"> Logout </a>			
 			</form>
 			</br>
 		</h2>
@@ -134,25 +123,8 @@ include("header.php");
 
 				
 				</table>
-				
-				</br>                         
-				</br>                         
-				</br>
 
-				<table id="signature" style="visibility:hidden;">
-					<tr> 
-							<td>
-							Course Teacher: <?php echo $_SESSION['user'] ?> 							
-							</br>                         
-							</br>                         
-							</br>                         
-							</br>
-							-----------------------
-							</br>                         
-							Signature & Date							  
-						    </td>					
-					 </tr>
-				</table>
+			
 				
 			</form>
 		</div>
